@@ -6,32 +6,28 @@ Sticky Notes
 
 {% block content %}
 
-<h2>All Notes</h2>
+<section class="page-heading">
+    <p class="eyebrow">Your workspace</p>
+    <h1>All Notes</h1>
+    <p>Keep quick thoughts, reminders and ideas in one place.</p>
+</section>
 
-<p>
-    <a href="{% url 'note_create' %}">➕ Create New Note</a>
-</p>
-
-<hr>
-
-{% for note in notes %}
-
-    <h3>
-        <a href="{% url 'note_detail' note.pk %}">
-            {{ note.title }}
-        </a>
-    </h3>
-
-    <p>{{ note.content|truncatewords:20 }}</p>
-
-    <small>Created: {{ note.created_at }}</small>
-
-    <hr>
-
-{% empty %}
-
-    <p>No notes have been created yet.</p>
-
-{% endfor %}
+<section class="notes-grid" aria-label="Saved notes">
+    {% for note in notes %}
+        <article class="sticky-note sticky-note-{{ forloop.counter0|divisibleby:3|yesno:'yellow,blue' }}">
+            <h2>
+                <a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a>
+            </h2>
+            <p>{{ note.content|truncatewords:20 }}</p>
+            <small>Created {{ note.created_at|date:"d M Y, H:i" }}</small>
+        </article>
+    {% empty %}
+        <div class="empty-state">
+            <h2>No notes yet</h2>
+            <p>Create your first sticky note to get started.</p>
+            <a class="button button-primary" href="{% url 'note_create' %}">Create a Note</a>
+        </div>
+    {% endfor %}
+</section>
 
 {% endblock %}

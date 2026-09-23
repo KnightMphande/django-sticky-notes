@@ -6,22 +6,17 @@ Create / Edit Note
 
 {% block content %}
 
-<h2>Create / Edit Note</h2>
-
-<form method="POST">
-
+<section class="form-card">
+    <p class="eyebrow">Note editor</p>
+    <h1>{% if object %}Edit Note{% else %}Create Note{% endif %}</h1>
+    <form method="post">
     {% csrf_token %}
-
     {{ form.as_p }}
-
-    <button type="submit">
-        Save
-    </button>
-
-</form>
-
-<p>
-    <a href="{% url 'note_list' %}">Back</a>
-</p>
+        <div class="actions">
+            <button class="button button-primary" type="submit">Save Note</button>
+            <a class="button button-secondary" href="{% url 'note_list' %}">Cancel</a>
+        </div>
+    </form>
+</section>
 
 {% endblock %}

@@ -6,19 +6,17 @@
 
 {% block content %}
 
-<h2>{{ note.title }}</h2>
+<article class="detail-card sticky-note">
+    <p class="eyebrow">Note details</p>
+    <h1>{{ note.title }}</h1>
+    <p class="note-content">{{ note.content|linebreaksbr }}</p>
+    <small>Created {{ note.created_at|date:"d M Y, H:i" }}</small>
+</article>
 
-<p>{{ note.content }}</p>
-
-<p>
-    <strong>Created:</strong>
-    {{ note.created_at }}
-</p>
-
-<p>
-    <a href="{% url 'note_update' note.pk %}">Edit</a> |
-    <a href="{% url 'note_delete' note.pk %}">Delete</a> |
-    <a href="{% url 'note_list' %}">Back</a>
-</p>
+<nav class="actions" aria-label="Note actions">
+    <a class="button button-primary" href="{% url 'note_update' note.pk %}">Edit Note</a>
+    <a class="button button-danger" href="{% url 'note_delete' note.pk %}">Delete Note</a>
+    <a class="button button-secondary" href="{% url 'note_list' %}">Back to Notes</a>
+</nav>
 
 {% endblock %}

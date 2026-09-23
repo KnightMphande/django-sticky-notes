@@ -6,25 +6,19 @@ Delete Note
 
 {% block content %}
 
-<h2>Delete Note</h2>
+<section class="form-card delete-card">
+    <p class="eyebrow">Confirmation required</p>
+    <h1>Delete Note</h1>
+    <p>Are you sure you want to delete <strong>{{ note.title }}</strong>?</p>
+    <p class="warning-text">This action cannot be undone.</p>
 
-<p>
-    Are you sure you want to delete
-    <strong>{{ note.title }}</strong>?
-</p>
-
-<form method="POST">
-
-    {% csrf_token %}
-
-    <button type="submit">
-        Delete
-    </button>
-
-</form>
-
-<p>
-    <a href="{% url 'note_list' %}">Cancel</a>
-</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="actions">
+            <button class="button button-danger" type="submit">Delete Note</button>
+            <a class="button button-secondary" href="{% url 'note_detail' note.pk %}">Cancel</a>
+        </div>
+    </form>
+</section>
 
 {% endblock %}

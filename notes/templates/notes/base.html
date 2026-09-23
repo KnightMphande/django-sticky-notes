@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +9,19 @@
             Sticky Notes
         {% endblock %}
     </title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <header class="site-header">
+        <div class="page-shell header-content">
+            <a class="brand" href="{% url 'note_list' %}">Sticky Notes</a>
+            <a class="button button-primary" href="{% url 'note_create' %}">Create New Note</a>
+        </div>
+    </header>
 
-    <h1>Sticky Notes Application</h1>
-    <hr>
-
-    {% block content %}
-    {% endblock %}
-
+    <main class="page-shell">
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>

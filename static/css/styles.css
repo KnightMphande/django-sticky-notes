@@ -1,0 +1,236 @@
+:root {
+    --ink: #273043;
+    --muted: #667085;
+    --paper: #fffdf7;
+    --yellow: #fff2a8;
+    --blue: #dff3ff;
+    --primary: #5c50d6;
+    --primary-dark: #463bb4;
+    --danger: #c83f4f;
+    --border: #ded9cb;
+    --shadow: 0 14px 30px rgba(39, 48, 67, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    background: #f5f2ea;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+.page-shell {
+    width: min(1100px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.site-header {
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 74px;
+}
+
+.brand {
+    color: var(--ink);
+    font-size: 1.35rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.page-heading {
+    margin: 3.5rem 0 2rem;
+}
+
+.page-heading h1,
+.form-card h1,
+.detail-card h1 {
+    margin: 0.15rem 0 0.35rem;
+    line-height: 1.2;
+}
+
+.page-heading p,
+.eyebrow {
+    color: var(--muted);
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+.sticky-note {
+    position: relative;
+    min-height: 230px;
+    padding: 1.6rem;
+    overflow-wrap: anywhere;
+    background: var(--yellow);
+    border: 1px solid rgba(82, 70, 9, 0.12);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+    transform: rotate(-0.6deg);
+}
+
+.sticky-note::before {
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 74px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.58);
+    content: "";
+    transform: translateX(-50%) rotate(1deg);
+}
+
+.sticky-note-blue {
+    background: var(--blue);
+    transform: rotate(0.5deg);
+}
+
+.sticky-note h2 {
+    margin-top: 0.35rem;
+}
+
+.sticky-note h2 a {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.sticky-note small {
+    display: block;
+    margin-top: 1.4rem;
+    color: #5d5a4c;
+}
+
+.form-card,
+.detail-card,
+.empty-state {
+    width: min(680px, 100%);
+    margin: 3.5rem auto;
+    padding: 2rem;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.detail-card {
+    min-height: 300px;
+    background: var(--yellow);
+    transform: none;
+}
+
+.note-content {
+    min-height: 120px;
+    font-size: 1.05rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid #bfc4cc;
+    border-radius: 6px;
+    font: inherit;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary);
+    outline: 3px solid rgba(92, 80, 214, 0.15);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    width: min(680px, 100%);
+    margin: 1.25rem auto 3rem;
+}
+
+.form-card .actions {
+    margin: 1.5rem 0 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.65rem 1rem;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.button-primary {
+    color: #fff;
+    background: var(--primary);
+}
+
+.button-primary:hover {
+    background: var(--primary-dark);
+}
+
+.button-secondary {
+    color: var(--ink);
+    background: #e8e7e2;
+}
+
+.button-danger {
+    color: #fff;
+    background: var(--danger);
+}
+
+.warning-text,
+.errorlist {
+    color: #a12737;
+    font-weight: 700;
+}
+
+@media (max-width: 560px) {
+    .header-content {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .page-heading,
+    .form-card,
+    .detail-card {
+        margin-top: 2rem;
+    }
+}
